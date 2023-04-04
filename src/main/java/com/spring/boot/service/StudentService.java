@@ -1,27 +1,31 @@
 package com.spring.boot.service;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.boot.Entity.Student;
-import com.spring.boot.repo.StudentRepo;
 
 @Service
-public class StudentService {
+public interface StudentService {
+
 	
-	@Autowired
-	public StudentRepo Studentrepo;
+    List<Student> getAllStudents();
+	void saveStudents(Student student);
+	void deleteStudentById(long id);
+	Student getStudentById(long id);
 	
 	
-	public List<Student> getAllStudents(){
+/*public List<Student> getAllStudents(){
 		List<Student> Students=new ArrayList<>();
 		Studentrepo.findAll().forEach(Students::add);
 		return Students;
 		
 		
+	}
+	public void register(Student Student) {
+		Studentrepo.save(Student);
 	}
 
 
@@ -39,6 +43,6 @@ public class StudentService {
 	public void DeleteStudents(String id) {
 		Studentrepo.deleteById(id);
 		
-	}
+	}*/
 
 }

@@ -2,6 +2,8 @@ package com.spring.boot.Entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.NoArgsConstructor;
@@ -9,31 +11,32 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 
-@Table(name="Student Details")
+@Table(name="StudentsDetails")
 public class Student {
-	public Student(String id, String name, String dept, Long fee, String sec) {
+	public Student(long id, String name, String dept,String sec, String Email) {
 		super();
 		this.id = id;
 		this.Name = name;
 		this.dept = dept;
-		this.Fee = fee;
+		this.Email = Email;
 		this.sec = sec;
 	}
 	@Id
+	@GeneratedValue(strategy =  GenerationType.AUTO)
 	@Column(name="ID")
-	private String id;
+	private long id;
 	@Column(name="NAME")
 	private String Name;
 	@Column(name="DEPT")
 	private String dept;
-	@Column(name="FEE")
-	private Long Fee;
+	@Column(name="email")
+	private String Email;
 	@Column(name="SEC")
 	private String sec;
-	public String getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -48,17 +51,18 @@ public class Student {
 	public void setDept(String dept) {
 		this.dept = dept;
 	}
-	public Long getFee() {
-		return Fee;
-	}
-	public void setFee(Long fee) {
-		Fee = fee;
-	}
+	
 	public String getSec() {
 		return sec;
 	}
 	public void setSec(String sec) {
 		this.sec = sec;
+	}
+	public String getEmail() {
+		return Email;
+	}
+	public void setEmail(String email) {
+		Email = email;
 	}
 
 }
